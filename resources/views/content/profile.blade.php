@@ -1,6 +1,7 @@
 @extends('home')
 
 @section('content')
+    <link rel="stylesheet" href="css/style.css">
     <div class="container">
         <div class="main-body">
             <div class="row gutters-sm">
@@ -59,7 +60,7 @@
                                 <h6 class="d-flex align-items-center mb-3">Project Public</h6>
                                 @foreach ($user->menu as $menu)
                                     @if ($menu->is_public == true)
-                                        <small>{{ $menu->title }}</small>
+                                        <small>{{ Str::upper($menu->title) }}</small>
                                         <hr>
                                     @endif
                                 @endforeach
@@ -72,7 +73,7 @@
                                 <h6 class="d-flex align-items-center mb-3">Project Private</h6>
                                 @foreach ($user->menu as $menu)
                                     @if ($menu->is_public == false)
-                                        <small>{{ $menu->title }}</small>
+                                        <small>{{ Str::upper($menu->title) }}</small>
                                         <hr>
                                     @endif
                                 @endforeach

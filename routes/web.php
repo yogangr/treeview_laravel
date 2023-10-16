@@ -28,7 +28,6 @@ Route::group(['middleware' => 'guest'], function () {
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', [HomeController::class, 'index']);
     Route::get('/profile', [AuthController::class, 'showProfile']);
-    Route::get('/create-data', [MenuController::class, 'viewCreateMenu']);
     Route::get('/', [MenuController::class, 'show']);
     Route::get('/public', [ViewController::class, 'viewPublic']);
     Route::get('/private', [ViewController::class, 'viewPrivate']);
@@ -36,4 +35,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Profile
     Route::get('/profile/update', [DetailProfileController::class, 'viewUpdate']);
+
+    // Menu
+    Route::get('/create-data', [MenuController::class, 'viewCreateMenu']);
+    Route::post('/create-data', [MenuController::class, 'createMenu'])->name('menu');
 });

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>TreeView</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Font Awesome -->
@@ -22,10 +22,16 @@
         <aside id="sidebar">
             <div class="h-100">
                 <div class="sidebar-logo">
-                    <a href="#">Nama Aplikasi</a>
+                    <a href="/">Nama Aplikasi</a>
                 </div>
                 <!-- Sidebar Navigation -->
                 <ul class="sidebar-nav">
+                    <li class="sidebar-item">
+                        <a href="/" class="sidebar-link">
+                            <i class="fa-solid fa-house pe-2"></i>
+                            Home
+                        </a>
+                    </li>
                     <li class="sidebar-item">
                         <a href="/profile" class="sidebar-link">
                             <i class="fa-solid fa-list pe-2"></i>
@@ -41,7 +47,7 @@
                     <li class="sidebar-item">
                         <a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse"
                             data-bs-target="#pages" aria-expanded="false" aria-controls="pages">
-                            <i class="fa-regular fa-file-lines pe-2"></i>&nbsp; Data
+                            <i class="fa-regular fa-file-lines pe-2"></i>&nbsp; Data Saya
                         </a>
                         <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
