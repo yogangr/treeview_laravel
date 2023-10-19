@@ -88,26 +88,6 @@
             </main>
         </div>
     </div>
-    @if (Session::has('success'))
-        <script>
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 2000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
-            })
-
-            Toast.fire({
-                icon: 'success',
-                title: 'Login sukses'
-            })
-        </script>
-    @endif
     <script>
         const toggler = document.querySelector(".btn");
         toggler.addEventListener("click", function() {

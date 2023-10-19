@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DetailProfileController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ItemController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ViewController;
 use Illuminate\Support\Facades\Route;
@@ -39,4 +40,7 @@ Route::group(['middleware' => 'auth'], function () {
     // Menu
     Route::get('/create-data', [MenuController::class, 'viewCreateMenu']);
     Route::post('/create-data', [MenuController::class, 'createMenu'])->name('menu');
+
+    // Item
+    Route::get('/create-item', [ItemController::class, 'indexView']);
 });

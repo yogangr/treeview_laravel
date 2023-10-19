@@ -17,16 +17,18 @@ class ItemController extends Controller
 
     public function indexView()
     {
+        $menu = session('new_menu');
         $items = Item::where('parent_id', '=', 0)->get();
-        $allitems = Item::pluck('title', 'id', 'content1', 'content2', 'menu_id')->all();
 
-        return view('menu.menuTreeview', compact('items', 'allitems'));
+        return view('content.item.index', compact('items', 'menu'));
     }
 
-    public function store(Request $request, Menu $menu)
+    public function store(Request $request,)
     {
         $request->validate([
             'title' => 'required',
+            'content1' => 'required',
+            'content2' => 'required',
         ]);
 
         $input = $request->all();
@@ -43,6 +45,6 @@ class ItemController extends Controller
     public function show()
     {
         $items = Item::where('parent_id', '=', 0)->get();
-        return view('menu.dynamicMenu', compact('items'));
+        return view('content.menu.dynamicMenu', compact('items'));
     }
 }

@@ -38,6 +38,8 @@ class MenuController extends Controller
             'created_by_name' => auth()->user()->name,
         ]);
 
-        return redirect('/')->with('success', 'Anda berhasil login');
+        session(['new_menu' => $menu]);
+
+        return redirect('/create-item')->with('success', 'Anda berhasil menambahkan data');
     }
 }
