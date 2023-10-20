@@ -29,7 +29,7 @@ Route::group(['middleware' => 'guest'], function () {
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', [HomeController::class, 'index']);
     Route::get('/profile', [AuthController::class, 'showProfile']);
-    Route::get('/', [MenuController::class, 'show']);
+    Route::get('/', [MenuController::class, 'index']);
     Route::get('/public', [ViewController::class, 'viewPublic']);
     Route::get('/private', [ViewController::class, 'viewPrivate']);
     Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');
@@ -40,7 +40,9 @@ Route::group(['middleware' => 'auth'], function () {
     // Menu
     Route::get('/create-data', [MenuController::class, 'viewCreateMenu']);
     Route::post('/create-data', [MenuController::class, 'createMenu'])->name('menu');
+    Route::get('/data/{id}', [MenuController::class, 'show'])->name('data');
 
     // Item
     Route::get('/create-item', [ItemController::class, 'indexView']);
+    Route::post('/create-item', [ItemController::class, 'store'])->name('create-item');
 });

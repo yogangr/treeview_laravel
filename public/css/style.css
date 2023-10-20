@@ -132,6 +132,51 @@ a.sidebar-link {
     width: 100vw;
 }
 
+.container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.title {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid gray;
+}
+
+.label {
+    flex: 1;
+    padding: 10px 15px;
+}
+
+.level {
+    font-size: 0.7em;
+    color: gray;
+    padding: 10px 15px;
+}
+
+.children {
+    display: none;
+}
+
+.item:hover .children {
+    display: block;
+}
+/*
+.line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background-color: gray;
+    margin: 10px 0;
+} */
+
 /* Responsive */
 
 @media (min-width: 768px) {

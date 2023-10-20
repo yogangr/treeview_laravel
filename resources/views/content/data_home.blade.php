@@ -8,6 +8,9 @@
             <div class="card-body">
                 <h5 class="card-title">{{ Str::upper($menu->title) }}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">created by: {{ $menu->created_by_name }}</h6>
+                <button class="btn btn-info">
+                    <a href="{{ route('data', ['id' => $menu->id]) }}">Lihat Data</a>
+                </button>
             </div>
         </div>
     @endforeach

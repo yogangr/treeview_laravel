@@ -18,13 +18,15 @@ class ItemController extends Controller
     public function indexView()
     {
         $menu = session('new_menu');
-        $items = Item::where('parent_id', '=', 0)->get();
-
-        return view('content.item.index', compact('items', 'menu'));
+        $items = Item::where('menu_id', '=', $menu->id)->where('parent_id', '=', 0)->get();
+        $allItems = Item::where('menu_id', '=', $menu->id)->get();
+        return view('content.item.index', compact('items', 'menu', 'allItems'));
     }
 
     public function store(Request $request,)
     {
+        $menu = session('new_menu');
+
         $request->validate([
             'title' => 'required',
             'content1' => 'required',
@@ -33,18 +35,8 @@ class ItemController extends Controller
 
         $input = $request->all();
         $input['parent_id'] = empty($input['parent_id']) ? 0 : $input['parent_id'];
+        $input['menu_id'] = $menu->id;
         Item::create($input);
         return back()->with('success', 'Menu added successfully.');
-    }
-
-    public function storeView()
-    {
-        return back()->with('success', 'Menu added successfully.');
-    }
-
-    public function show()
-    {
-        $items = Item::where('parent_id', '=', 0)->get();
-        return view('content.menu.dynamicMenu', compact('items'));
     }
 }

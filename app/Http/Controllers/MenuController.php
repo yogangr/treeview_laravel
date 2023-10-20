@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Item;
 use App\Models\Menu;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class MenuController extends Controller
 {
-    public function show()
+    public function index()
     {
         $menus = Menu::where('is_public', '=', 1)->get();
         return view('content.data_home', compact('menus'));
@@ -41,5 +42,12 @@ class MenuController extends Controller
         session(['new_menu' => $menu]);
 
         return redirect('/create-item')->with('success', 'Anda berhasil menambahkan data');
+    }
+
+    public function show($id)
+    {
+        $menu = Menu::find($id);
+        $items = Item::where('menu_id', '=', $menu->id)->where('parent_id', '=', 0)->get();
+        return view('content.view_data', compact('menu', 'items'));
     }
 }
