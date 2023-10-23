@@ -30,8 +30,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/', [HomeController::class, 'index']);
     Route::get('/profile', [AuthController::class, 'showProfile']);
     Route::get('/', [MenuController::class, 'index']);
-    Route::get('/public', [ViewController::class, 'viewPublic']);
-    Route::get('/private', [ViewController::class, 'viewPrivate']);
+    Route::get('/public', [MenuController::class, 'myDataPublic']);
+    Route::get('/private', [MenuController::class, 'myDataPrivate']);
     Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');
 
     // Profile

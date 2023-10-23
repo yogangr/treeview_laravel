@@ -2,13 +2,12 @@
 
 @section('content')
     <link rel="stylesheet" href="css/style.css">
-    <div class="container">
+    <div class="contain">
         <div class="h2 fw-bold">{{ Str::upper($menu->title) }}</div>
-        <p>{{ $menu->created_by_name }}</p>
         <div class="row">
-            <div class="col-md-4" style="height: 500px; border: 1px solid #ccc;">
+            <div class="col-md-3" style="height: 70vh; border: 1px solid #ccc;">
                 <!-- Kolom Kiri -->
-                <h5 class="mb-4 text-center bg-success text-white ">Add New Menu</h5>
+                <h5 class="mb-4 mt-2 text-center ">Add New Menu</h5>
                 <form action="{{ route('create-item') }}" method="POST">
                     @csrf
                     @if (count($errors) > 0)
@@ -57,37 +56,41 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-12 mt-4">
                             <button class="btn btn-success">Save</button>
                         </div>
                     </div>
                 </form>
                 <!-- Konten di sini -->
             </div>
-            <div class="col-md-8" style="height: 500px; overflow-y: scroll; border: 1px solid #ccc;">
+            <div class="col-md-9" style="height: 70vh; overflow-y: scroll; border: 1px solid #ccc;">
                 <!-- Kolom Kanan -->
-                <h5 class="text-center mb-4 bg-info text-white">Menu List</h5>
-                @foreach ($items as $item)
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $item->title }}</h5>
-                            <div class="divider"></div>
-                            <div class="row">
-                                <div class="col-6">{{ $item->content1 }}</div>
-                                <div class="col-6">{{ $item->content2 }}</div>
+                <ul class="tree mt-3">
+                    @foreach ($items as $item)
+                        <li>
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $item->title }}</h5>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-6">{{ $item->content1 }}</div>
+                                        <div class="col-6">{{ $item->content2 }}</div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    @if (count($item->childs))
-                        @include('content.item.manageChild', [
-                            'childs' => $item->childs,
-                        ])
-                    @endif
-                @endforeach
+                        </li>
+                        @if (count($item->childs))
+                            @include('content.item.manageAddChild', [
+                                'childs' => $item->childs,
+                            ])
+                        @endif
+                    @endforeach
+                </ul>
                 <!-- Konten di sini -->
 
             </div>
         </div>
+        <button class="btn btn-success mt-4"><a href="{{ route('data', ['id' => $menu->id]) }}">Selesai</a></button>
     </div>
 
     @if (Session::has('success'))

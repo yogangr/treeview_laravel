@@ -41,7 +41,7 @@ li {
     max-width: 264px;
     min-width: 264px;
     transition: all 0.35s ease-in-out;
-    box-shadow: 0 0 35px 0 rgba(49, 57, 66, 0.5);
+    box-shadow: 0 0 5px 0 rgba(49, 57, 66, 0.5);
     z-index: 1111;
 
 }
@@ -167,15 +167,159 @@ a.sidebar-link {
 .item:hover .children {
     display: block;
 }
-/*
-.line {
+
+.btn a {
+    text-decoration: none;
+    color: white;
+}
+
+.btn {
+    border-radius: 2px;
+}
+
+/* view tree */
+
+.content {
+    overflow-x: auto;
+    scroll-behavior: smooth;
+}
+
+.tree .card-body {
+    padding: 0;
+}
+
+.tree .card {
+    width: 200px;
+    height: fit-content;
+}
+
+.tree .card-body hr {
+    margin: 0;
+    padding: 0
+}
+
+.tree .card .card-title {
+    margin: 10px;
+    font-size: 20px;
+}
+
+.tree .card .card-content {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+
+
+.content details {
+    width: fit-content;
+}
+
+.content ul {
+    list-style: none;
+}
+
+.tree summary {
+    cursor: pointer;
+}
+
+.tree summary::marker {
+    display: none;
+}
+
+.tree summary::-webkit-details-marker {
+    display: none;
+}
+
+.content ul li {
+    position: relative;
+}
+
+.content li {
+    left: 6em;
+}
+
+.content ul.tree li::before {
     position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 1px;
-    background-color: gray;
-    margin: 10px 0;
-} */
+    left: -10px;
+    top: -25px;
+    border-left: 2px solid grey;
+    border-bottom: 2px solid grey;
+    content: "";
+    width: 3em;
+    height: 4em;
+}
+
+.content ul.tree li::after {
+    position: absolute;
+    left: -10px;
+    bottom: -22px;
+    border-left: 2px solid grey;
+    content: "";
+    width: 3em;
+    height: 100%;
+}
+
+.content ul li:last-child::after {
+    display: none;
+}
+
+.content ul.tree > li:after, ul.tree > li:before {
+    display: none;
+}
+
+.content ul.tree > li {
+    position: relative;
+    left: 0px;
+}
+
+.content ul.child > li:not(:has(ul)) {
+    pointer-events: none;
+    cursor: default;
+}
+
+.tree .card hr {
+    width: 100%
+}
+
+.tree .card {
+    border-radius: 1px;
+    border: 2px solid gray;
+    text-align: center;
+    padding: 0px;
+    display: flex;
+}
+
+.tree .card .card-content {
+    font-size: 14px;
+}
+
+/* view tree */
+
+/* Add Data */
+
+.add-data ul.tree li::before {
+    position: absolute;
+    left: -10px;
+    top: -25px;
+    border-left: 2px solid grey;
+    border-bottom: 2px solid grey;
+    content: "";
+    width: 3em;
+    height: 4em;
+}
+
+.add-data ul.tree li::after {
+    position: absolute;
+    left: -10px;
+    bottom: -22px;
+    border-left: 2px solid grey;
+    content: "";
+    width: 3em;
+    height: 100%;
+}
+
+/* Add Data */
 
 /* Responsive */
 

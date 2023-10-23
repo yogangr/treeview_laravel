@@ -50,4 +50,18 @@ class MenuController extends Controller
         $items = Item::where('menu_id', '=', $menu->id)->where('parent_id', '=', 0)->get();
         return view('content.view_data', compact('menu', 'items'));
     }
+
+    public function myDataPublic()
+    {
+        $user = auth()->user();
+        $menus = Menu::where('is_public', '=', 1)->where('created_by', '=', $user->id)->get();
+        return view('content.view_public', compact('menus'));
+    }
+
+    public function myDataPrivate()
+    {
+        $user = auth()->user();
+        $menus = Menu::where('is_public', '=', 0)->where('created_by', '=', $user->id)->get();
+        return view('content.view_private', compact('menus'));
+    }
 }

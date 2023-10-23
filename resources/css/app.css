@@ -113,6 +113,32 @@ a.sidebar-link {
     width: 100vw;
 }
 
+.card {
+    position: relative;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 100%;
+    width: 1px;
+    background-color: gray;
+  }
+
+  .card:first-child::before {
+    display: none;
+  }
+
+  .card:nth-child(odd)::before {
+    left: -40px;
+  }
+
+  .card:nth-child(even)::before {
+    left: 0;
+  }
 /* Responsive */
 
 @media (min-width: 768px) {
