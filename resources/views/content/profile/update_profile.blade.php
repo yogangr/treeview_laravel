@@ -1,6 +1,7 @@
 @extends('home')
 
 @section('content')
+    <link rel="stylesheet" href="../css/style.css">
     <div class="container">
         <div class="row gutters">
             <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">

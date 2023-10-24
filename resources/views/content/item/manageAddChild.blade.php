@@ -4,11 +4,13 @@
             <div class="card m-4">
                 <div class="card-body">
                     <h5 class="card-title">{{ $child->title }}</h5>
-                    <hr>
-                    <div class="row">
-                        <div class="col-6 card-content">{{ $child->content1 }}</div>
-                        <div class="col-6 card-content">{{ $child->content2 }}</div>
-                    </div>
+                    @if ($child->content1 || $child->content2)
+                        <hr>
+                        <div class="row">
+                            <div class="col-6 card-content">{{ $child->content1 }}</div>
+                            <div class="col-6 card-content">{{ $child->content2 }}</div>
+                        </div>
+                    @endif
                 </div>
             </div>
             @if (count($child->childs))

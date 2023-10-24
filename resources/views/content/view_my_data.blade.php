@@ -2,7 +2,16 @@
 
 @section('content')
     <link rel="stylesheet" href="/css/style.css">
-    <h1>Judul : {{ Str::upper($menu->title) }}</h1>
+    <div class="row">
+        <div class="col-10">
+
+            <h1>Judul : {{ Str::upper($menu->title) }}</h1>
+        </div>
+        <div class="col-2 d-flex py-2">
+            <button class="btn btn-info mx-2">Edit</button>
+            <button class="btn btn-danger mx-2">Hapus</button>
+        </div>
+    </div>
     <div class="content">
         <ul class="tree">
             <li>

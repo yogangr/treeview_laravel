@@ -29,8 +29,6 @@ class ItemController extends Controller
 
         $request->validate([
             'title' => 'required',
-            'content1' => 'required',
-            'content2' => 'required',
         ]);
 
         $input = $request->all();

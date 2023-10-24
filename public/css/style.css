@@ -195,8 +195,10 @@ a.sidebar-link {
 
 .tree .card-body hr {
     margin: 0;
-    padding: 0
+    padding: 0;
 }
+
+
 
 .tree .card .card-title {
     margin: 10px;
@@ -247,7 +249,7 @@ a.sidebar-link {
     border-bottom: 2px solid grey;
     content: "";
     width: 3em;
-    height: 4em;
+    height: 3em;
 }
 
 .content ul.tree li::after {
@@ -267,6 +269,7 @@ a.sidebar-link {
 .content ul.tree > li:after, ul.tree > li:before {
     display: none;
 }
+
 
 .content ul.tree > li {
     position: relative;

@@ -71,11 +71,13 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $item->title }}</h5>
-                                    <hr>
-                                    <div class="row">
-                                        <div class="col-6">{{ $item->content1 }}</div>
-                                        <div class="col-6">{{ $item->content2 }}</div>
-                                    </div>
+                                    @if ($item->content1 || $item->content2)
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-6 card-content">{{ $item->content1 }}</div>
+                                            <div class="col-6 card-content">{{ $item->content2 }}</div>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         </li>

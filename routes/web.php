@@ -41,6 +41,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/create-data', [MenuController::class, 'viewCreateMenu']);
     Route::post('/create-data', [MenuController::class, 'createMenu'])->name('menu');
     Route::get('/data/{id}', [MenuController::class, 'show'])->name('data');
+    Route::get('public/mydata/{id}', [MenuController::class, 'showMyData'])->name('myDataPublic');
+    Route::get('private/mydata/{id}', [MenuController::class, 'showMyData'])->name('myDataPrivate');
+    Route::delete('/data/{id}', [MenuController::class, 'deleteMenu'])->name('menu.delete');
+    Route::put('/data/{id}', [MenuController::class, 'updateMenu'])->name('menu.update');
 
     // Item
     Route::get('/create-item', [ItemController::class, 'indexView']);

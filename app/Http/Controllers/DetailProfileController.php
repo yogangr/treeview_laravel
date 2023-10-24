@@ -51,6 +51,7 @@ class DetailProfileController extends Controller
 
     public function viewUpdate()
     {
-        return view('content.profile');
+        $user = auth()->user();
+        return view('content.profile', compact('user'));
     }
 }

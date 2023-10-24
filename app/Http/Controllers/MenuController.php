@@ -64,4 +64,53 @@ class MenuController extends Controller
         $menus = Menu::where('is_public', '=', 0)->where('created_by', '=', $user->id)->get();
         return view('content.view_private', compact('menus'));
     }
+
+    public function showMyData($id)
+    {
+        $menu = Menu::find($id);
+        $items = Item::where('menu_id', '=', $menu->id)->where('parent_id', '=', 0)->get();
+        return view('content.view_my_data', compact('menu', 'items'));
+    }
+
+    public function deleteMenu($id)
+    {
+        $menu = Menu::find($id);
+
+        if (!$menu) {
+            return back()->with('error', 'Menu tidak ditemukan!');
+        }
+
+        // Hapus semua child menu
+        $menu->item()->delete();
+
+        // Hapus menu
+        $menu->delete();
+
+        session()->flash('delete', 'Anda berhasil menghapus menu');
+
+        return back();
+    }
+
+    public function updateMenu($id, Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'title' => 'required',
+            'is_public' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return back()->with('error', 'Data tidak valid!');
+        }
+
+        $menu = Menu::find($id);
+
+        $menu->title = $request->get('title');
+        $menu->is_public = $request->get('is_public') === '1';
+
+        $menu->save();
+
+        session()->flash('update', 'Menu berhasil diperbarui!');
+
+        return back();
+    }
 }
