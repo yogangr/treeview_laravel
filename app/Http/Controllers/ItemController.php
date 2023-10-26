@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Item;
 use App\Models\Menu;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ItemController extends Controller
 {
@@ -36,5 +37,34 @@ class ItemController extends Controller
         $input['menu_id'] = $menu->id;
         Item::create($input);
         return back()->with('success', 'Menu added successfully.');
+    }
+
+    public function updateItem($id, Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'title' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return back()->with('error', 'Data tidak valid!');
+        }
+
+        $item = Item::find($id);
+
+        $item->title = $request->get('title');
+        $item->content1 = $request->get('content1');
+        $item->content2 = $request->get('content2');
+
+        $item->save();
+
+        session()->flash('update', 'Item berhasil diperbarui!');
+
+        return back();
+    }
+
+    public function editModal($id)
+    {
+        $item = Item::find($id);
+        return view('content.modal_list_item', compact('item'));
     }
 }

@@ -1,7 +1,7 @@
 @extends('home')
 
 @section('content')
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <h1>Data Public Saya</h1>
     @foreach ($menus as $menu)
         <div class="card mb-3">

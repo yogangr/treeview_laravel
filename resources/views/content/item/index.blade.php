@@ -115,4 +115,21 @@
             })
         </script>
     @endif
+
+    <script>
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        const elements = document.querySelectorAll('.tree, .child');
+
+        elements.forEach(function(element) {
+            element.style.color = getRandomColor();
+        });
+    </script>
 @endsection

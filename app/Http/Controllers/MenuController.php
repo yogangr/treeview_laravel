@@ -47,8 +47,9 @@ class MenuController extends Controller
     public function show($id)
     {
         $menu = Menu::find($id);
+        $randomColor = '#' . str_pad(dechex(mt_rand(0, 0xFFFFFF)), 6, '0', STR_PAD_LEFT);
         $items = Item::where('menu_id', '=', $menu->id)->where('parent_id', '=', 0)->get();
-        return view('content.view_data', compact('menu', 'items'));
+        return view('content.view_data', compact('menu', 'items', 'randomColor'));
     }
 
     public function myDataPublic()
