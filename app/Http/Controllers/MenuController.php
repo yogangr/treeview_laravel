@@ -29,7 +29,7 @@ class MenuController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return back()->with('error', 'Alamat email telah terdaftar!');
+            return back()->with('createMenuError');
         }
 
         $menu = Menu::create([
@@ -41,7 +41,7 @@ class MenuController extends Controller
 
         session(['new_menu' => $menu]);
 
-        return redirect('/create-item')->with('success', 'Anda berhasil menambahkan data');
+        return redirect('/create-item')->with('createMenu', 'Anda berhasil menambahkan data');
     }
 
     public function show($id)

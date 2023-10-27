@@ -6,7 +6,11 @@
         <div class="col-10">
             <h1>Judul : {{ Str::upper($menu->title) }}</h1>
         </div>
-
+        <div class="col-2">
+            <button class="btn btn-success">
+                <a href="{{ route('add-item', ['id' => $menu->id]) }}">Tambah Item</a>
+            </button>
+        </div>
     </div>
     <div class="content">
         <ul class="tree">
@@ -24,9 +28,13 @@
                                     </div>
                                 @endif
                                 <a href="#" class="btn btn-primary edit-btn" data-bs-toggle="modal"
-                                    data-bs-target="#list-item-modal{{ $menu->id }}"><i class="fas fa-edit"></i></a>
-                                @include('content.modal_list_item')
-                                <i class="fa-solid fa-trash" style="color: #ff0000;"></i>
+                                    data-bs-target="#edit-item-modal{{ $item->id }}"><i class="fas fa-edit"></i></a>
+                                @include('content.modal_edit_item')
+                                <a href="#" class="btn btn-primary delete-btn" data-bs-toggle="modal"
+                                    data-bs-target="#delete-item-modal{{ $item->id }}"><i class="fa-solid fa-trash"
+                                        style="color: #ff0000;"></i></i></a>
+                                @include('content.delete_item_modal')
+
                             </div>
                         </summary>
                         @if (count($item->childs))

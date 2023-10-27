@@ -1,6 +1,6 @@
 <ul class="child">
     @foreach ($childs as $child)
-        <li>
+        <li class="public">
             <details>
                 <summary class="card m-4">
                     <div class="card-body">

@@ -1,14 +1,14 @@
 @extends('home')
 
 @section('content')
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <div class="contain">
         <div class="h2 fw-bold">{{ Str::upper($menu->title) }}</div>
         <div class="row">
             <div class="col-md-3" style="height: 70vh; border: 1px solid #ccc;">
                 <!-- Kolom Kiri -->
                 <h5 class="mb-4 mt-2 text-center ">Add New Menu</h5>
-                <form action="{{ route('create-item') }}" method="POST">
+                <form action="{{ route('add-item', ['id' => $menu->id]) }}" method="POST">
                     @csrf
                     @if (count($errors) > 0)
                         <div class="alert alert-danger  alert-dismissible">

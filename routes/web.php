@@ -50,4 +50,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/item/{id}', [ItemController::class, 'editModal'])->name('edit-item');
     Route::put('/item/{id}', [ItemController::class, 'updateItem'])->name('item.update');
     Route::post('/create-item', [ItemController::class, 'store'])->name('create-item');
+    Route::delete('/item/{id}', [ItemController::class, 'deleteItem'])->name('item.delete');
+    Route::get('/add-item/{id}', [ItemController::class, 'addItemView'])->name('add-item');
+    Route::post('/add-item/{id}', [ItemController::class, 'addItem'])->name('add-item');
 });

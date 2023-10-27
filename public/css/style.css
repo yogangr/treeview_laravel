@@ -276,7 +276,7 @@ a.sidebar-link {
     left: 0px;
 }
 
-.content ul.child > li:not(:has(ul)) {
+.content ul.child > li.public:not(:has(ul)) {
     pointer-events: none;
     cursor: default;
 }
@@ -297,6 +297,7 @@ a.sidebar-link {
     font-size: 14px;
 }
 
+/* edit button */
 .tree .card {
     transition: box-shadow 0.3s;
 }
@@ -308,16 +309,17 @@ a.sidebar-link {
 .tree .card .edit-btn {
     display: none;
     position: absolute;
-    top: -10px;
-    right: -10px;
+    top: 0px;
+    right: -25px;
     border-radius: 100%;
     height: 25px;
     width: 25px;
     border-color: transparent;
-    background-color: rgba(128, 128, 128, 0.484);
+    background-color: transparent;
 }
 
 .tree .card .fa-edit {
+    color: #252525;
     height: 20px;
     width: 20px;
     position: absolute;
@@ -326,6 +328,66 @@ a.sidebar-link {
 }
 
 .tree .card:hover .edit-btn {
+    display: inline-block;
+}
+
+.child .mydata .card {
+    transition: box-shadow 0.3s;
+}
+
+.child .mydata .card:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.child .mydata .card .edit-btn {
+    display: none;
+    position: absolute;
+    top: -5px;
+    right: -25px;
+    border-radius: 100%;
+    height: 25px;
+    width: 25px;
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.child .mydata .card .fa-edit {
+    color: #252525;
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    top: 3px;
+    right: 1px;
+}
+
+.child .mydata .card:hover .edit-btn {
+    display: inline-block;
+}
+
+/* delete button */
+
+
+.tree .card .delete-btn {
+    display: none;
+    position: absolute;
+    top: 25px;
+    right: -25px;
+    border-radius: 100%;
+    height: 25px;
+    width: 25px;
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.tree .card .fa-trash {
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    top: 3px;
+    right: 1px;
+}
+
+.tree .card:hover .delete-btn {
     display: inline-block;
 }
 
@@ -355,6 +417,10 @@ a.sidebar-link {
 }
 
 /* Add Data */
+
+.modal .edit {
+    text-align: start;
+}
 
 /* Responsive */
 
