@@ -68,4 +68,22 @@ class AuthController extends Controller
         $user = auth()->user();
         return view('content.profile', compact('user'));
     }
+
+    public function viewUpdateProfile()
+    {
+        $user = auth()->user();
+        return view('content.profile.update_profile', compact('user'));
+    }
+
+    public function updateProfile(Request $request, $id)
+    {
+        $user = User::find($id);
+        $user->name = $request['name'];
+        $user->email = $request['email'];
+        $user->telephone = $request['telephone'];
+        $user->address = $request['address'];
+        $user->save();
+
+        return redirect()->route('profile')->with('success', 'Profile updated successfully');
+    }
 }

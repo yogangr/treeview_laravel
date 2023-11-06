@@ -3,7 +3,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="edit-menu-modal-label">Edit Item</h5>
+                <h5 class="modal-title" id="edit-item-modal-label">Edit Item</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body edit">
@@ -16,19 +16,20 @@
                             value="{{ $item->title }}">
                     </div>
                     <div class="form-group">
-                        <label for="title" class="label">Konten 1</label>
+                        <label for="content1" class="label">Konten 1</label>
                         <input type="text" class="form-control" id="content1" name="content1"
                             value="{{ $item->content1 }}">
                     </div>
                     <div class="form-group">
-                        <label for="title" class="label">Konten 2</label>
+                        <label for="content2" class="label">Konten 2</label>
                         <input type="text" class="form-control" id="content2" name="content2"
                             value="{{ $item->content2 }}">
                     </div>
+                    <button type="submit" class="btn btn-primary mt-3">Simpan</button>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary mt-3">Simpan</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
             </div>
         </div>
     </div>

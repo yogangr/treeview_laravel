@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('content1');
-            $table->string('content2');
+            $table->string('content1')->nullable();
+            $table->string('content2')->nullable();
             $table->integer('parent_id');
             $table->foreignId('menu_id');
             $table->timestamps();

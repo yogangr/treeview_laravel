@@ -22,6 +22,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'telephone',
+        'address',
     ];
 
     /**
@@ -43,11 +45,6 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-
-    public function detailProfile(): HasOne
-    {
-        return $this->hasOne(DetailProfile::class);
-    }
 
     public function menu()
     {

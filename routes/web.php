@@ -27,14 +27,15 @@ Route::group(['middleware' => 'guest'], function () {
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', [HomeController::class, 'index']);
-    Route::get('/profile', [AuthController::class, 'showProfile']);
+    Route::get('/profile', [AuthController::class, 'showProfile'])->name('profile');
     Route::get('/', [MenuController::class, 'index']);
     Route::get('/public', [MenuController::class, 'myDataPublic']);
     Route::get('/private', [MenuController::class, 'myDataPrivate']);
     Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');
 
     // Profile
-    Route::get('/profile/update', [DetailProfileController::class, 'viewUpdate']);
+    Route::get('/profile/update', [AuthController::class, 'viewUpdateProfile'])->name('profile.update.view');
+    Route::put('/profile/update/{id}', [AuthController::class, 'updateProfile'])->name('profile.update');
 
     // Menu
     Route::get('/create-data', [MenuController::class, 'viewCreateMenu']);

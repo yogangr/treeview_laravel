@@ -29,6 +29,10 @@ li {
     list-style: none;
 }
 
+.content {
+    background-color: #ffffff;
+}
+
 /* Layout skeleton */
 
 .wrapper {
@@ -43,7 +47,12 @@ li {
     transition: all 0.35s ease-in-out;
     box-shadow: 0 0 5px 0 rgba(49, 57, 66, 0.5);
     z-index: 1111;
+    background-color: #ffffff;
 
+}
+
+.navbar {
+    background-color: #ffffff;
 }
 
 /* Sidebar collapse */
@@ -66,7 +75,7 @@ li {
 }
 
 .sidebar-logo a {
-    color: #252525;
+    color: #1d1f21;
     font-size: 1.25rem;
     font-weight: 600;
     text-decoration: none;
@@ -80,7 +89,7 @@ li {
 }
 
 .sidebar-header {
-    color: #252525;
+    color: #1d1f21;
     font-size: 0.75rem;
     padding: 1.5rem 1.5rem 0.375rem;
     text-decoration: none;
@@ -88,7 +97,7 @@ li {
 
 a.sidebar-link {
     padding: 0.625rem 1.625rem;
-    color: #252525;
+    color: #1d1f21;
     position: relative;
     display: block;
     font-size: 1rem;
@@ -97,7 +106,7 @@ a.sidebar-link {
 
 .sidebar-item .logout {
     padding: 0.625rem 1.625rem;
-    color: #252525;
+    color: #1d1f21;
     position: relative;
     display: block;
     font-size: 1rem;
@@ -106,6 +115,14 @@ a.sidebar-link {
     position: fixed; bottom: 1rem;
     border: 0;
     background-color: transparent;
+}
+
+.sidebar-item .fa-solid {
+    color: #FF6600;
+}
+
+.sidebar-item .fa-regular {
+    color: #FF6600;
 }
 
 .sidebar-link[data-bs-toggle="collapse"]::after {
@@ -191,6 +208,8 @@ a.sidebar-link {
 .tree .card {
     width: 200px;
     height: fit-content;
+    background-color: #FF6600;
+    border: none;
 }
 
 .tree .card-body hr {
@@ -198,20 +217,18 @@ a.sidebar-link {
     padding: 0;
 }
 
-
-
 .tree .card .card-title {
     margin: 10px;
     font-size: 20px;
+    color: #ffffa1;
 }
 
 .tree .card .card-content {
     margin-bottom: 10px;
     margin-top: 10px;
     font-size: 14px;
+    color: #ffffa1;
 }
-
-
 
 .content details {
     width: fit-content;
@@ -245,8 +262,19 @@ a.sidebar-link {
     position: absolute;
     left: -10px;
     top: -24px;
-    border-left: 3px solid;
-    border-bottom: 3px solid;
+    border-left: 2px solid;
+    border-bottom: 2px solid;
+    content: "";
+    width: 3em;
+    height: 3em;
+}
+
+.content ul.tree li::before {
+    position: absolute;
+    left: -10px;
+    top: -24px;
+    border-left: 2px solid;
+    border-bottom: 2px solid;
     content: "";
     width: 3em;
     height: 3em;
@@ -256,11 +284,12 @@ a.sidebar-link {
     position: absolute;
     left: -10px;
     bottom: -22px;
-    border-left: 3px solid;
+    border-left: 2px solid;
     content: "";
     width: 3em;
     height: 100%;
 }
+
 
 .content ul li:last-child::after {
     display: none;
@@ -281,13 +310,14 @@ a.sidebar-link {
     cursor: default;
 }
 
+
 .tree .card hr {
-    width: 100%
+    width: 100%;
+    color: #ffffa1;
 }
 
 .tree .card {
-    border-radius: 1px;
-    border: 3px solid black;
+    border-radius: 3px;
     text-align: center;
     padding: 0px;
     display: flex;
@@ -295,6 +325,22 @@ a.sidebar-link {
 
 .tree .card .card-content {
     font-size: 14px;
+}
+
+.card-menu {
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+    border-radius: 1px;
+    background-color: #64CCC5;
+}
+
+.card-menu .btn-info {
+    background-color: #04364A;
+}
+.card-menu .card-title {
+    color: #04364A;
+}
+.card-menu .card-subtitle {
+    color: #04364A;
 }
 
 /* edit button */

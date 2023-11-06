@@ -31,7 +31,7 @@
                                     <h6 class="mb-0">Phone</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    -
+                                    {{ $user->telephone }}
                                 </div>
                             </div>
                             <hr>
@@ -40,14 +40,13 @@
                                     <h6 class="mb-0">Address</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    -
+                                    {{ $user->address }}
                                 </div>
                             </div>
                             <hr>
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <a class="btn btn-info " target="__blank"
-                                        href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Edit</a>
+                                    <a class="btn btn-info " href="{{ route('profile.update.view') }}">Edit</a>
                                 </div>
                             </div>
                         </div>
