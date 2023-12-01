@@ -54,6 +54,7 @@ class ItemController extends Controller
         $item->title = $request->get('title');
         $item->content1 = $request->get('content1');
         $item->content2 = $request->get('content2');
+        $item->description = $request->get('description');
 
         $item->save();
 
@@ -109,5 +110,11 @@ class ItemController extends Controller
         $input['menu_id'] = $menu->id;
         Item::create($input);
         return back()->with('success', 'Menu added successfully.');
+    }
+
+    public function getDetailsItem($id)
+    {
+        $item = Item::find($id);
+        return view('content.item.modal_description', compact('item'));
     }
 }

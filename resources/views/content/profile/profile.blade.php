@@ -1,8 +1,12 @@
 @extends('home')
 
+@section('navbar')
+    <h1 class="judul">Profile</h1>
+@endsection
+
 @section('content')
     <link rel="stylesheet" href="css/style.css">
-    <div class="container">
+    <div class="container profile">
         <div class="main-body">
             <div class="row gutters-sm">
                 <div class="col-md-8">
@@ -53,9 +57,9 @@
                     </div>
                 </div>
                 <div class="row gutters-sm">
-                    <div class="col-sm-6 mb-3">
-                        <div class="card h-100">
-                            <div class="card-body">
+                    <div class="col-sm-5 mb-3">
+                        <div class="card">
+                            <div class="card-body project">
                                 <h6 class="d-flex align-items-center mb-3">Project Public</h6>
                                 @foreach ($user->menu as $menu)
                                     @if ($menu->is_public == true)
@@ -66,9 +70,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6 mb-3">
-                        <div class="card h-100">
-                            <div class="card-body">
+                </div>
+                <div class="row gutters-sm">
+                    <div class="col-sm-5 mb-3">
+                        <div class="card">
+                            <div class="card-body project">
                                 <h6 class="d-flex align-items-center mb-3">Project Private</h6>
                                 @foreach ($user->menu as $menu)
                                     @if ($menu->is_public == false)

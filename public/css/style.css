@@ -30,7 +30,15 @@ li {
 }
 
 .content {
-    background-color: #ffffff;
+    overflow-x: auto;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+}
+
+.content-tree {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 /* Layout skeleton */
@@ -53,6 +61,10 @@ li {
 
 .navbar {
     background-color: #ffffff;
+    /* position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; */
 }
 
 /* Sidebar collapse */
@@ -68,6 +80,7 @@ li {
     width: 100%;
     overflow: hidden;
     transition: all 0.35s ease-in-out;
+    justify-content: start;
 }
 
 .sidebar-logo {
@@ -112,22 +125,23 @@ a.sidebar-link {
     font-size: 1rem;
     text-decoration: none;
     font-weight: 600;
-    position: fixed; bottom: 1rem;
+    position: fixed;
+    bottom: 1rem;
     border: 0;
     background-color: transparent;
 }
 
 .sidebar-item .fa-solid {
-    color: #FF6600;
+    color: #0F1C2E;
 }
 
 .sidebar-item .fa-regular {
-    color: #FF6600;
+    color: #0F1C2E;
 }
 
 .sidebar-link[data-bs-toggle="collapse"]::after {
     border: solid;
-    border-width: 0 0.075rem 0.075rem 0;
+    border-width: 0 0.1rem 0.1rem 0;
     content: "";
     display: inline-block;
     padding: 2px;
@@ -194,11 +208,30 @@ a.sidebar-link {
     border-radius: 2px;
 }
 
+/* Navbar */
+.judul {
+    padding-top: 10px;
+    font-weight: 700;
+    font-size: 26px;
+}
+
+/* Profile */
+.profile {
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+    left: -100px;
+}
+
+/* Datatable */
+.table-striped {
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+}
+
 /* view tree */
 
-.content {
-    overflow-x: auto;
-    scroll-behavior: smooth;
+.card {
+    width: 50vw;
 }
 
 .tree .card-body {
@@ -206,10 +239,11 @@ a.sidebar-link {
 }
 
 .tree .card {
-    width: 200px;
+    width: 150px;
     height: fit-content;
-    background-color: #FF6600;
-    border: none;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 2px;
 }
 
 .tree .card-body hr {
@@ -217,17 +251,17 @@ a.sidebar-link {
     padding: 0;
 }
 
-.tree .card .card-title {
-    margin: 10px;
-    font-size: 20px;
-    color: #ffffa1;
+.tree .card .card-body .card-title {
+    margin: 7px;
+    font-size: 14px;
+    color: #1d1f21;
 }
 
-.tree .card .card-content {
-    margin-bottom: 10px;
-    margin-top: 10px;
-    font-size: 14px;
-    color: #ffffa1;
+.tree .card .card-body .card-content {
+    margin-bottom: 7px;
+    margin-top: 7px;
+    font-size: 8px;
+    color: #1d1f21;
 }
 
 .content details {
@@ -258,69 +292,131 @@ a.sidebar-link {
     left: 6em;
 }
 
-.content ul.tree li::before {
-    position: absolute;
-    left: -10px;
-    top: -24px;
-    border-left: 2px solid;
-    border-bottom: 2px solid;
-    content: "";
-    width: 3em;
-    height: 3em;
+ul.tree li.parent {
+    width: fit-content;
 }
 
-.content ul.tree li::before {
-    position: absolute;
-    left: -10px;
-    top: -24px;
-    border-left: 2px solid;
-    border-bottom: 2px solid;
-    content: "";
-    width: 3em;
-    height: 3em;
+/* Mode 2 */
+
+.tree {
+    width: 100%;
+    height: auto;
+    text-align: center;
 }
 
-.content ul.tree li::after {
+.tree li {
+    text-align: center;
+    padding: 10px;
+}
+
+details.open>summary.card-parent::after {
+    position: relative;
+    top: 22px;
+    left: 70px;
+    border-left: 1px solid;
+    content: "";
+    height: 22px;
+}
+
+details.open>summary.card-parent {
+    position: relative;
+    left: 50%;
+}
+
+ul.tree>li.parent>details.open>ul {
+    display: flex;
+    position: relative;
+    left: 1%;
+}
+
+ul.tree>li.parent>details.open>ul>li {
+    display: inline-block;
+    position: relative;
+}
+
+.content ul.tree>li.parent>details>ul>li>details>ul.child li {
+    padding-right: 100px;
+}
+
+ul.tree>li.parent>details>ul>li::before {
     position: absolute;
-    left: -10px;
+    left: 110px;
+    top: 5px;
+    border-left: 1px solid;
+    border-top: 1px solid;
+    content: "";
+    width: 100%;
+    height: 30px;
+}
+
+ul.tree>li.parent>details>ul>li::after {
+    position: absolute;
+    left: 110px;
+    top: 5px;
+    border-top: 1px solid;
+    content: "";
+    width: 100%;
+}
+
+ul.tree>li.parent>details>ul>li:last-child:before {
+    width: 0;
+}
+
+ul.tree>li.parent>details>ul>li {
+    position: relative;
+    left: 10vh;
+}
+
+.content ul.tree>li.parent>details>ul>li>details>ul.child li::before {
+    position: absolute;
+    left: -27px;
+    top: -24px;
+    border-left: 1px solid;
+    border-bottom: 1px solid;
+    content: "";
+    width: 4em;
+    height: 5em;
+}
+
+.content ul.tree>li.parent>details>ul>li>details>ul.child li::after {
+    position: absolute;
+    left: -27px;
     bottom: -22px;
-    border-left: 2px solid;
+    border-left: 1px solid;
     content: "";
     width: 3em;
     height: 100%;
 }
 
-
-.content ul li:last-child::after {
+.content ul ul.child li:last-child::after {
     display: none;
 }
 
-.content ul.tree > li:after, ul.tree > li:before {
+.content ul.tree>li:after,
+ul.tree>li:before {
     display: none;
 }
 
 
-.content ul.tree > li {
+.content ul.tree>li {
     position: relative;
     left: 0px;
-}
-
-.content ul.child > li.public:not(:has(ul)) {
-    pointer-events: none;
-    cursor: default;
 }
 
 
 .tree .card hr {
     width: 100%;
-    color: #ffffa1;
+    color: #1d1f21;
 }
 
 .tree .card {
     border-radius: 3px;
     text-align: center;
-    padding: 0px;
+    padding-right: 7px;
+    padding-left: 7px;
     display: flex;
+    flex: 2;
+    white-space: wrap;
 }
 
 .tree .card .card-content {
@@ -330,15 +426,17 @@ a.sidebar-link {
 .card-menu {
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
     border-radius: 1px;
-    background-color: #64CCC5;
+    background-color: #ffffff;
 }
 
 .card-menu .btn-info {
     background-color: #04364A;
 }
+
 .card-menu .card-title {
     color: #04364A;
 }
+
 .card-menu .card-subtitle {
     color: #04364A;
 }
@@ -346,13 +444,16 @@ a.sidebar-link {
 /* edit button */
 .tree .card {
     transition: box-shadow 0.3s;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+    border-radius: 1px;
+    background-color: #ffffff;
 }
 
 .tree .card:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.tree .card .edit-btn {
+.tree .card .info-btn {
     display: none;
     position: absolute;
     top: 0px;
@@ -364,8 +465,7 @@ a.sidebar-link {
     background-color: transparent;
 }
 
-.tree .card .fa-edit {
-    color: #252525;
+.tree .card .fa-circle-info {
     height: 20px;
     width: 20px;
     position: absolute;
@@ -373,7 +473,7 @@ a.sidebar-link {
     right: 1px;
 }
 
-.tree .card:hover .edit-btn {
+.tree .card:hover .info-btn {
     display: inline-block;
 }
 
@@ -385,10 +485,34 @@ a.sidebar-link {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.child .mydata .card .edit-btn {
+.child .mydata .card .info-btn {
     display: none;
     position: absolute;
     top: -5px;
+    right: -25px;
+    border-radius: 100%;
+    height: 25px;
+    width: 25px;
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.child .mydata .card .fa-circle-info {
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    top: 3px;
+    right: 1px;
+}
+
+.child .mydata .card:hover .info-btn {
+    display: inline-block;
+}
+
+.child .mydata .card .edit-btn {
+    display: none;
+    position: absolute;
+    top: 15px;
     right: -25px;
     border-radius: 100%;
     height: 25px;
@@ -410,13 +534,62 @@ a.sidebar-link {
     display: inline-block;
 }
 
+.child .mydata .card .delete-btn {
+    display: none;
+    position: absolute;
+    top: 35px;
+    right: -25px;
+    border-radius: 100%;
+    height: 25px;
+    width: 25px;
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.child .mydata .card .fa-trash {
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    top: 3px;
+    right: 1px;
+}
+
+.child .mydata .card:hover .delete-btn {
+    display: inline-block;
+}
+
 /* delete button */
 
+
+.tree .card .edit-btn {
+    color: #252525;
+    display: none;
+    position: absolute;
+    top: 24px;
+    right: -26px;
+    border-radius: 100%;
+    height: 25px;
+    width: 25px;
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.tree .card .fa-edit {
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    top: 3px;
+    right: 1px;
+}
+
+.tree .card:hover .edit-btn {
+    display: inline-block;
+}
 
 .tree .card .delete-btn {
     display: none;
     position: absolute;
-    top: 25px;
+    top: 50px;
     right: -25px;
     border-radius: 100%;
     height: 25px;
@@ -464,14 +637,205 @@ a.sidebar-link {
 
 /* Add Data */
 
+.content-tree {
+    transition: transform 0.3s ease;
+}
+
+/* Button */
+
 .modal .edit {
+    text-align: start;
+}
+
+.modal .description {
     text-align: start;
 }
 
 /* Responsive */
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
     .content {
         width: auto;
     }
+
+    body {
+        background-color: #04364A;
+    }
+
+    #sidebar {
+        max-width: 150px;
+        min-width: 150px;
+        /* transition: all 0.35s ease-in-out; */
+        box-shadow: 0 0 5px 0 rgba(49, 57, 66, 0.5);
+        z-index: 1111;
+        background-color: #ffffff;
+        margin-left: -150px;
+    }
+
+    #sidebar.collapsed {
+        position: relative;
+        margin-left: 0px;
+    }
+
+    .sidebar-logo {
+        padding: 10px;
+    }
+
+    .sidebar-logo a {
+        color: #1d1f21;
+        font-size: 16px;
+        font-weight: 600;
+        text-decoration: none;
+        position: fixed;
+    }
+
+    .sidebar-nav {
+        padding: 10px;
+        position: fixed;
+        margin-top: 1rem;
+    }
+
+    .sidebar-header {
+        color: #1d1f21;
+        font-size: 12px;
+        padding: 3px;
+        text-decoration: none;
+    }
+
+    a.sidebar-link {
+        padding: 3px;
+        color: #1d1f21;
+        position: relative;
+        display: block;
+        font-size: 12px;
+        text-decoration: none;
+    }
+
+    .sidebar-item .logout {
+        padding: 3px;
+        color: #1d1f21;
+        position: relative;
+        display: block;
+        font-size: 12px;
+        text-decoration: none;
+        font-weight: 600;
+        position: fixed;
+        bottom: 1rem;
+        border: 0;
+        background-color: transparent;
+    }
+
+    .sidebar-item .fa-solid {
+        color: #0F1C2E;
+    }
+
+    .sidebar-item .fa-regular {
+        color: #0F1C2E;
+    }
+
+    .sidebar-link[data-bs-toggle="collapse"]::after {
+        border: solid;
+        border-width: 0 0.075rem 0.075rem 0;
+        content: "";
+        display: inline-block;
+        padding: 2px;
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        transform: rotate(-135deg);
+        transition: all 0.2s ease-out;
+    }
+
+    .sidebar-link[data-bs-toggle="collapse"].collapsed::after {
+        transform: rotate(45deg);
+        transition: all 0.2s ease-out;
+    }
+
+    .judul {
+        padding-top: 10px;
+        font-weight: 700;
+        font-size: 16px;
+    }
+
+    table#example {
+        width: 100% !important;
+        font-size: 12px;
+    }
+
+    table#example td .btn{
+        font-size: 12px !important;
+        margin: 5px;
+    }
+
+    #example_wrapper .row .col-sm-12 {
+        width: 50%;
+    }
+
+    #example_wrapper .row .col-md-5 {
+        width: 100%;
+    }
+
+    #example_wrapper .row .col-md-7 {
+        width: 100%;
+    }
+
+    #example_wrapper .dt-row .col-sm-12 {
+        width: 100% !important;
+    }
+
+    .dataTables_length {
+        font-size: 12px !important;
+    }
+
+    .dataTables_filter {
+        font-size: 12px !important;
+    }
+
+    .dataTables_info {
+        font-size: 12px !important;
+    }
+
+    .dataTables_paginate .pagination .paginate_button {
+        left: 0 !important;
+    }
+
+    .dataTables_paginate .pagination .paginate_button .page-link{
+        font-size: 12px !important;
+    }
+
+    /* .card-menu {
+        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+        border-radius: 1px;
+        background-color: #ffffff;
+    }
+
+    .card-menu .btn-info {
+        background-color: #04364A;
+    }
+
+    .card-menu .card-title {
+        color: #04364A;
+    }
+
+    .card-menu .card-subtitle {
+        color: #04364A;
+    }
+
+    .card-menu .card-title {
+        font-size: 12px;
+        color: #1d1f21;
+    }
+
+    .card-menu .card-subtitle {
+        font-size: 10px;
+        color: #1d1f21;
+    }
+
+    .card-menu .btn-info a{
+        font-size: 10px;
+    }
+
+    .card-menu .btn-info{
+        font-size: 10px;
+    } */
 }

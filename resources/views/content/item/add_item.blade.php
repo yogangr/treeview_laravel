@@ -45,6 +45,14 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
+                                <label>Deskripsi</label>
+                                <textarea name="description" class="form-control"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
                                 <label>Parent</label>
                                 <select class="form-control" name="parent_id">
                                     <option selected disabled>Select Parent Menu</option>
@@ -65,9 +73,9 @@
             </div>
             <div class="col-md-9" style="height: 70vh; overflow-y: scroll; border: 1px solid #ccc;">
                 <!-- Kolom Kanan -->
-                <ul class="tree mt-3">
+                <ul class="tree">
                     @foreach ($items as $item)
-                        <li>
+                        <li class="add-item">
                             <div class="card">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $item->title }}</h5>
@@ -80,12 +88,12 @@
                                     @endif
                                 </div>
                             </div>
+                            @if (count($item->childs))
+                                @include('content.item.child.manageAddChild', [
+                                    'childs' => $item->childs,
+                                ])
+                            @endif
                         </li>
-                        @if (count($item->childs))
-                            @include('content.item.manageAddChild', [
-                                'childs' => $item->childs,
-                            ])
-                        @endif
                     @endforeach
                 </ul>
                 <!-- Konten di sini -->
@@ -130,6 +138,45 @@
 
         elements.forEach(function(element) {
             element.style.color = getRandomColor();
+        });
+    </script>
+
+    <script>
+        const nestedUlTreeLis = document.querySelectorAll("ul.tree li");
+        const defaultMode = nestedUlTreeLis.forEach((li) => {
+            // Create and style the before pseudo-element
+            const beforeElement = document.createElement("div");
+            beforeElement.style.position = "absolute";
+            beforeElement.style.left = "-50px";
+            beforeElement.style.top = "0px";
+            beforeElement.style.borderLeft = "2px solid";
+            beforeElement.style.borderBottom = "2px solid";
+            beforeElement.style.content = "";
+            beforeElement.style.width = "4em";
+            beforeElement.style.height = "1.5em";
+            li.prepend(beforeElement);
+
+            // Create and style the after pseudo-element
+            const afterElement = document.createElement("div");
+            afterElement.style.position = "absolute";
+            afterElement.style.left = "-50px";
+            afterElement.style.bottom = "-22px";
+            afterElement.style.borderLeft = "2px solid";
+            afterElement.style.content = "";
+            afterElement.style.width = "4em";
+            afterElement.style.height = "100%";
+            li.appendChild(afterElement);
+
+            // Hide the after pseudo-element for the last child
+            if (li.parentElement && li.parentElement.lastElementChild === li) {
+                afterElement.style.display = "none";
+            }
+
+            // Hide the pseudo-elements for direct children of ul.tree
+            if (li.parentElement === document.querySelector("ul.tree")) {
+                beforeElement.style.display = "none";
+                afterElement.style.display = "none";
+            }
         });
     </script>
 @endsection

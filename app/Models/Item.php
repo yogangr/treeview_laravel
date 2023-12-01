@@ -13,6 +13,7 @@ class Item extends Model
         'title',
         'content1',
         'content2',
+        'description',
         'menu_id',
         'parent_id',
     ];

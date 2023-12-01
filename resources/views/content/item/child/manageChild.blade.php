@@ -12,10 +12,14 @@
                                 <div class="col-6 card-content">{{ $child->content2 }}</div>
                             </div>
                         @endif
+                        <a href="#" class="btn btn-primary info-btn" data-bs-toggle="modal"
+                            data-bs-target="#info-modal-child{{ $child->id }}"><i class="fa-solid fa-circle-info"
+                                style="color: #00b3ff;"></i></i></a>
+                        @include('content.item.child.modal_description_child')
                     </div>
                 </summary>
                 @if (count($child->childs))
-                    @include('content.item.manageChild', ['childs' => $child->childs])
+                    @include('content.item.child.manageChild', ['childs' => $child->childs])
                 @endif
             </details>
         </li>

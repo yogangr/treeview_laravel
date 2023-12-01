@@ -66,7 +66,7 @@ class AuthController extends Controller
     public function showProfile()
     {
         $user = auth()->user();
-        return view('content.profile', compact('user'));
+        return view('content.profile.profile', compact('user'));
     }
 
     public function viewUpdateProfile()

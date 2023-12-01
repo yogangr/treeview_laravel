@@ -1,8 +1,11 @@
 @extends('home')
 
+@section('navbar')
+    <h1 class="judul">Tambah Data</h1>
+@endsection
+
 @section('content')
     <link rel="stylesheet" href="css/style.css">
-    <h1>Tambah Data</h1>
     <form action="{{ route('menu') }}" method="POST">
         @csrf
         <div class="row mb-3">
@@ -15,16 +18,16 @@
             <legend class="col-form-label col-sm-2 pt-0">Status</legend>
             <div class="col-sm-10">
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="is_public" id="is_public" value="1">
-                    <label class="form-check-label" for="is_public">
+                    <input class="form-check-input" type="radio" name="is_public" value="1">
+                    <div class="form-check-label" for="is_public">
                         Publik
-                    </label>
+                    </div>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="is_public" id="is_public" value="0">
-                    <label class="form-check-label" for="is_public">
+                    <input class="form-check-input" type="radio" name="is_public" value="0">
+                    <div class="form-check-label" for="is_public">
                         Private
-                    </label>
+                    </div>
                 </div>
             </div>
         </fieldset>

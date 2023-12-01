@@ -48,6 +48,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Item
     Route::get('/create-item', [ItemController::class, 'indexView']);
+    Route::get('/item/detail/{id}', [ItemController::class, 'getDetailsItem'])->name('detail-item');
     Route::get('/item/{id}', [ItemController::class, 'editModal'])->name('edit-item');
     Route::put('/item/{id}', [ItemController::class, 'updateItem'])->name('item.update');
     Route::post('/create-item', [ItemController::class, 'store'])->name('create-item');

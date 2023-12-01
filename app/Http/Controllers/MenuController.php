@@ -12,12 +12,12 @@ class MenuController extends Controller
     public function index()
     {
         $menus = Menu::where('is_public', '=', 1)->get();
-        return view('content.data_home', compact('menus'));
+        return view('content.view.data_home', compact('menus'));
     }
 
     public function viewCreateMenu()
     {
-        return view('content.add_data');
+        return view('content.menu.add_data');
     }
 
     public function createMenu(Request $request)
@@ -47,30 +47,29 @@ class MenuController extends Controller
     public function show($id)
     {
         $menu = Menu::find($id);
-        $randomColor = '#' . str_pad(dechex(mt_rand(0, 0xFFFFFF)), 6, '0', STR_PAD_LEFT);
         $items = Item::where('menu_id', '=', $menu->id)->where('parent_id', '=', 0)->get();
-        return view('content.view_data', compact('menu', 'items', 'randomColor'));
+        return view('content.view.view_data', compact('menu', 'items'));
     }
 
     public function myDataPublic()
     {
         $user = auth()->user();
         $menus = Menu::where('is_public', '=', 1)->where('created_by', '=', $user->id)->get();
-        return view('content.view_public', compact('menus'));
+        return view('content.view.view_public', compact('menus'));
     }
 
     public function myDataPrivate()
     {
         $user = auth()->user();
         $menus = Menu::where('is_public', '=', 0)->where('created_by', '=', $user->id)->get();
-        return view('content.view_private', compact('menus'));
+        return view('content.view.view_private', compact('menus'));
     }
 
     public function showMyData($id)
     {
         $menu = Menu::find($id);
         $items = Item::where('menu_id', '=', $menu->id)->where('parent_id', '=', 0)->get();
-        return view('content.view_my_data', compact('menu', 'items'));
+        return view('content.view.view_my_data', compact('menu', 'items'));
     }
 
     public function deleteMenu($id)

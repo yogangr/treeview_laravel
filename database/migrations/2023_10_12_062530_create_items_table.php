@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('content1')->nullable();
             $table->string('content2')->nullable();
+            $table->longText('description')->nullable();
             $table->integer('parent_id');
             $table->foreignId('menu_id');
             $table->timestamps();
