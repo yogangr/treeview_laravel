@@ -50,7 +50,7 @@
                             <hr>
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <a class="btn btn-info " href="{{ route('profile.update.view') }}">Edit</a>
+                                    <a class="btn btn-warning " href="{{ route('profile.update.view') }}">Edit</a>
                                 </div>
                             </div>
                         </div>

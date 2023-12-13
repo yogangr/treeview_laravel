@@ -24,11 +24,12 @@
                             <a href="{{ route('myDataPrivate', ['id' => $menu->id]) }}"><i class="fa-solid fa-eye"></i></a>
                         </button>
                         <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                            data-bs-target="#edit-menu-modal{{ $menu->id }}">Edit</button>
+                            data-bs-target="#edit-menu-modal{{ $menu->id }}"><i
+                                class="fa-solid fa-pen-to-square"></i></button>
                         @include('content.menu.modal_edit')
                         <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                             data-bs-target="#delete-menu-modal{{ $menu->id }}">
-                            Hapus Data
+                            <i class="fa-solid fa-trash"></i>
                         </button>
                         @include('content.menu.modal_delete')
                     </td>

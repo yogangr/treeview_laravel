@@ -1,8 +1,6 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\DetailProfileController;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\MenuController;
 use Illuminate\Support\Facades\Route;
@@ -26,7 +24,6 @@ Route::group(['middleware' => 'guest'], function () {
 });
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/', [HomeController::class, 'index']);
     Route::get('/profile', [AuthController::class, 'showProfile'])->name('profile');
     Route::get('/', [MenuController::class, 'index']);
     Route::get('/public', [MenuController::class, 'myDataPublic']);

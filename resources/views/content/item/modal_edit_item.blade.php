@@ -38,6 +38,3 @@
         </div>
     </div>
 </div>
-<script>
-    document.getElementById("description").value += 'Test Feedback';
-</script>

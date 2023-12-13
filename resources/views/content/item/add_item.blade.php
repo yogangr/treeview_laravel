@@ -5,9 +5,9 @@
     <div class="contain">
         <div class="h2 fw-bold">{{ Str::upper($menu->title) }}</div>
         <div class="row">
-            <div class="col-md-3" style="height: 70vh; border: 1px solid #ccc;">
+            <div class="col-md-3 add-tree-left" style="height: 70vh; border: 1px solid #ccc;">
                 <!-- Kolom Kiri -->
-                <h5 class="mb-4 mt-2 text-center ">Add New Menu</h5>
+                <h5 class="mb-4 mt-2 text-center ">Tambahkan Item Baru</h5>
                 <form action="{{ route('add-item', ['id' => $menu->id]) }}" method="POST">
                     @csrf
                     @if (count($errors) > 0)
@@ -56,7 +56,7 @@
                                 <label>Parent</label>
                                 <select class="form-control" name="parent_id">
                                     <option selected disabled>Select Parent Menu</option>
-                                    @foreach ($allItems as $value)
+                                    @foreach ($allItems->sortBy('title') as $value)
                                         <option value="{{ $value->id }}">{{ $value->title }}</option>
                                     @endforeach
                                 </select>
@@ -71,7 +71,7 @@
                 </form>
                 <!-- Konten di sini -->
             </div>
-            <div class="col-md-9" style="height: 70vh; overflow-y: scroll; border: 1px solid #ccc;">
+            <div class="col-md-9 add-tree" style="height: 70vh; overflow-y: scroll; border: 1px solid #ccc;">
                 <!-- Kolom Kanan -->
                 <ul class="tree">
                     @foreach ($items as $item)
@@ -86,6 +86,13 @@
                                             <div class="col-6 card-content">{{ $item->content2 }}</div>
                                         </div>
                                     @endif
+                                    <a href="#" class="btn btn-primary edit-btn" data-bs-toggle="modal"
+                                        data-bs-target="#edit-item-modal{{ $item->id }}"><i class="fas fa-edit"></i></a>
+                                    @include('content.item.modal_edit_item')
+                                    <a href="#" class="btn btn-primary delete-btn" data-bs-toggle="modal"
+                                        data-bs-target="#delete-item-modal{{ $item->id }}"><i class="fa-solid fa-trash"
+                                            style="color: #ff0000;"></i></i></a>
+                                    @include('content.item.delete_item_modal')
                                 </div>
                             </div>
                             @if (count($item->childs))

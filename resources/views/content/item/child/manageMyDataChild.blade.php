@@ -32,3 +32,44 @@
         </li>
     @endforeach
 </ul>
+
+{{-- <ul class="tree">
+    <li class="parent">
+        @foreach ($items as $item)
+            <details id="parent" class="mydata">
+                <summary class="card m-3 card-parent">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $item->title }}</h5>
+                        @if ($item->content1 || $item->content2)
+                            <hr>
+                            <div class="row">
+                                <div class="col-6 card-content">{{ $item->content1 }}</div>
+                                <div class="col-6 card-content">{{ $item->content2 }}</div>
+                            </div>
+                        @endif
+                    </div>
+                </summary>
+                <ul class="child">
+                    @foreach ($childs as $child)
+                        <li>
+                            <details class="mydata">
+                                <summary class="card m-4">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ $child->title }}</h5>
+                                        @if ($child->content1 || $child->content2)
+                                            <hr>
+                                            <div class="row">
+                                                <div class="col-6 card-content">{{ $child->content1 }}</div>
+                                                <div class="col-6 card-content">{{ $child->content2 }}</div>
+                                            </div>
+                                        @endif
+                                    </div>
+                                </summary>
+                            </details>
+                        </li>
+                    @endforeach
+                </ul>
+            </details>
+        @endforeach
+    </li>
+</ul> --}}

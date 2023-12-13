@@ -3,17 +3,17 @@
 @section('navbar')
     <h1 class="judul">{{ Str::upper($menu->title) }}</h1>
     <button class="btn btn-primary ms-auto">
-        <a href="{{ route('add-item', ['id' => $menu->id]) }}">Tambah Item</a>
+        <a href="{{ route('add-item', ['id' => $menu->id]) }}">+</a>
     </button>
 @endsection
 
 @section('content')
     <link rel="stylesheet" href="/css/style.css">
     <div class="content-tree" id="content">
-        <ul class="tree">
+        <ul class="tree data">
             <li class="parent">
                 @foreach ($items as $item)
-                    <details id="parent">
+                    <details id="parent" class="mydata">
                         <summary class="card m-3 card-parent">
                             <div class="card-body">
                                 <h5 class="card-title">{{ $item->title }}</h5>
@@ -196,6 +196,62 @@
         });
     </script> --}}
 
+
+    {{-- <script>
+        const detailsOpen = document.querySelectorAll('details>ul.child>li:not(:first-child) details');
+        const summaryParent = document.querySelectorAll('summary.card-parent');
+        if (detailsOpen) {
+            summaryParent.forEach(function(summary) {
+                summary.style.transform = 'translateX(-50%)';
+                summary.style.backgroundColor = 'blue';
+            });
+        }
+    </script> --}}
+    {{-- <script>
+        const detailsElements = document.querySelectorAll('details');
+
+        for (const detailsElement of detailsElements) {
+            detailsElement.addEventListener('toggle', () => {
+                if (detailsElement.open) {
+                    const childList = detailsElement.querySelector('ul.child');
+                    if (childList) {
+                        const detailsOpen = childList.querySelectorAll('li:not(:first-child) details[open]');
+                        if (detailsOpen.length > 0) {
+                            const summaryParent = detailsElement.querySelector('summary.card-parent');
+                            if (summaryParent) {
+                                summaryParent.style.transform = 'translateX(-50%)';
+                                summaryParent.style.backgroundColor = 'blue';
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    </script> --}}
+    {{-- <script>
+        const allDetails = document.querySelectorAll('details>ul.child>li:not(:first-child) details');
+        const summaryParent = document.querySelectorAll('summary.card-parent');
+
+        // Fungsi untuk menangani perubahan status open pada details
+        function handleDetailsOpen(event) {
+            const details = event.target;
+            const isOpen = details.open;
+
+            summaryParent.forEach(function(summary) {
+                // Tambahkan gaya atau logika lain di sini
+                if (isOpen) {
+                    summary.style.transform = 'translateX(-50%)';
+                } else {
+                    summary.style.transform = ' ';
+                }
+            });
+        }
+
+        // Menambahkan event listener untuk setiap elemen details
+        allDetails.forEach(function(details) {
+            details.addEventListener('toggle', handleDetailsOpen);
+        });
+    </script> --}}
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const myDetails = document.getElementById('parent');

@@ -56,20 +56,17 @@ li {
     box-shadow: 0 0 5px 0 rgba(49, 57, 66, 0.5);
     z-index: 1111;
     background-color: #ffffff;
-
+    position: relative;
 }
 
 .navbar {
     background-color: #ffffff;
-    /* position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000; */
 }
 
 /* Sidebar collapse */
 
 #sidebar.collapsed {
+    position: relative;
     margin-left: -264px;
 }
 
@@ -157,16 +154,11 @@ a.sidebar-link {
     transition: all 0.2s ease-out;
 }
 
+/* Konten */
 .content {
     flex: 1;
     max-width: 100vw;
     width: 100vw;
-}
-
-.container {
-    width: 100%;
-    max-width: 1000px;
-    margin: 0 auto;
 }
 
 .title {
@@ -289,14 +281,16 @@ a.sidebar-link {
 }
 
 .content li {
+    left: 1em;
+}
+
+.content li.add-item {
     left: 6em;
 }
 
 ul.tree li.parent {
     width: fit-content;
 }
-
-/* Mode 2 */
 
 .tree {
     width: 100%;
@@ -318,7 +312,7 @@ details.open>summary.card-parent::after {
     height: 22px;
 }
 
-details.open>summary.card-parent {
+details.open>summary.card-parent{
     position: relative;
     left: 50%;
 }
@@ -330,12 +324,9 @@ ul.tree>li.parent>details.open>ul {
 }
 
 ul.tree>li.parent>details.open>ul>li {
-    display: inline-block;
+    display: flex;
+    flex-direction: row;
     position: relative;
-}
-
-.content ul.tree>li.parent>details>ul>li>details>ul.child li {
-    padding-right: 100px;
 }
 
 ul.tree>li.parent>details>ul>li::before {
@@ -369,7 +360,7 @@ ul.tree>li.parent>details>ul>li {
 
 .content ul.tree>li.parent>details>ul>li>details>ul.child li::before {
     position: absolute;
-    left: -27px;
+    left: 0px;
     top: -24px;
     border-left: 1px solid;
     border-bottom: 1px solid;
@@ -380,7 +371,7 @@ ul.tree>li.parent>details>ul>li {
 
 .content ul.tree>li.parent>details>ul>li>details>ul.child li::after {
     position: absolute;
-    left: -27px;
+    left: 0px;
     bottom: -22px;
     border-left: 1px solid;
     content: "";
@@ -477,15 +468,15 @@ ul.tree>li:before {
     display: inline-block;
 }
 
-.child .mydata .card {
+ .mydata .card {
     transition: box-shadow 0.3s;
 }
 
-.child .mydata .card:hover {
+ .mydata .card:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.child .mydata .card .info-btn {
+ .mydata .card .info-btn {
     display: none;
     position: absolute;
     top: -5px;
@@ -497,7 +488,7 @@ ul.tree>li:before {
     background-color: transparent;
 }
 
-.child .mydata .card .fa-circle-info {
+ .mydata .card .fa-circle-info {
     height: 20px;
     width: 20px;
     position: absolute;
@@ -505,11 +496,11 @@ ul.tree>li:before {
     right: 1px;
 }
 
-.child .mydata .card:hover .info-btn {
+ .mydata .card:hover .info-btn {
     display: inline-block;
 }
 
-.child .mydata .card .edit-btn {
+ .mydata .card .edit-btn {
     display: none;
     position: absolute;
     top: 15px;
@@ -521,7 +512,7 @@ ul.tree>li:before {
     background-color: transparent;
 }
 
-.child .mydata .card .fa-edit {
+ .mydata .card .fa-edit {
     color: #252525;
     height: 20px;
     width: 20px;
@@ -530,11 +521,11 @@ ul.tree>li:before {
     right: 1px;
 }
 
-.child .mydata .card:hover .edit-btn {
+ .mydata .card:hover .edit-btn {
     display: inline-block;
 }
 
-.child .mydata .card .delete-btn {
+ .mydata .card .delete-btn {
     display: none;
     position: absolute;
     top: 35px;
@@ -546,7 +537,7 @@ ul.tree>li:before {
     background-color: transparent;
 }
 
-.child .mydata .card .fa-trash {
+ .mydata .card .fa-trash {
     height: 20px;
     width: 20px;
     position: absolute;
@@ -554,18 +545,17 @@ ul.tree>li:before {
     right: 1px;
 }
 
-.child .mydata .card:hover .delete-btn {
+ .mydata .card:hover .delete-btn {
     display: inline-block;
 }
 
 /* delete button */
 
 
-.tree .card .edit-btn {
-    color: #252525;
+.add-item .card .edit-btn {
     display: none;
     position: absolute;
-    top: 24px;
+    top: -5px;
     right: -26px;
     border-radius: 100%;
     height: 25px;
@@ -574,7 +564,8 @@ ul.tree>li:before {
     background-color: transparent;
 }
 
-.tree .card .fa-edit {
+.add-item .card .fa-edit {
+    color: #252525;
     height: 20px;
     width: 20px;
     position: absolute;
@@ -582,14 +573,14 @@ ul.tree>li:before {
     right: 1px;
 }
 
-.tree .card:hover .edit-btn {
+.add-item .card:hover .edit-btn {
     display: inline-block;
 }
 
-.tree .card .delete-btn {
+.add-item .card .delete-btn {
     display: none;
     position: absolute;
-    top: 50px;
+    top: 15px;
     right: -25px;
     border-radius: 100%;
     height: 25px;
@@ -598,7 +589,7 @@ ul.tree>li:before {
     background-color: transparent;
 }
 
-.tree .card .fa-trash {
+.add-item .card .fa-trash {
     height: 20px;
     width: 20px;
     position: absolute;
@@ -606,7 +597,7 @@ ul.tree>li:before {
     right: 1px;
 }
 
-.tree .card:hover .delete-btn {
+.add-item .card:hover .delete-btn {
     display: inline-block;
 }
 
@@ -803,39 +794,165 @@ ul.tree>li:before {
         font-size: 12px !important;
     }
 
-    /* .card-menu {
-        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
-        border-radius: 1px;
-        background-color: #ffffff;
+    /* Tree */
+
+    ul.tree {
+        position: relative;
+        left: -10%;
+        top: -50%;
+        width: 100%;
+        height: auto;
+        text-align: center;
     }
 
-    .card-menu .btn-info {
-        background-color: #04364A;
+    .tree li {
+        text-align: center;
+        padding: 10px;
     }
 
-    .card-menu .card-title {
-        color: #04364A;
+    details.open>summary.card-parent::after {
+        position: relative;
+        top: 22px;
+        left: 70px;
+        border-left: 0px solid;
+        content: "";
+        height: 22px;
     }
 
-    .card-menu .card-subtitle {
-        color: #04364A;
+    details.open>summary.card-parent{
+        position: relative;
+        left: 0;
     }
 
-    .card-menu .card-title {
-        font-size: 12px;
+    ul.tree>li.parent>details.open>ul {
+        display: flex;
+        position: relative;
+        left: 1%;
+        flex-direction: column;
+    }
+
+    ul.tree>li.parent>details.open>ul>li {
+        position: relative;
+    }
+
+    .content ul.tree>li.parent>details>ul>li>details>ul.child li {
+        padding-right: 100px;
+    }
+
+    ul.data>li.parent>details>ul>li::before {
+        position: absolute;
+        left: -15px;
+        top: -17px;
+        border-left: 1px solid;
+        border-bottom: 1px solid;
+        border-top: 0px;
+        content: "";
+        width: 4em;
+        height: 4em;
+    }
+
+    ul.data>li.parent>details>ul>li::after {
+        position: absolute;
+        left: -15px;
+        bottom: -22px;
+        border-left: 1px solid;
+        border-top: 0px;
+        content: "";
+        width: 3em;
+        height: 100%;
+    }
+
+    ul.data>li.parent>details>ul>li:last-child:before {
+        width: 4em;
+    }
+
+    ul.data>li.parent>details>ul>li {
+        position: relative;
+        left: 10vh;
+    }
+
+    .content ul.data li::before {
+        position: absolute;
+        left: -27px;
+        top: -24px;
+        border-left: 1px solid;
+        border-bottom: 1px solid;
+        content: "";
+        width: 4em;
+        height: 5em;
+    }
+
+    .content ul.data li::after {
+        position: absolute;
+        left: -27px;
+        bottom: -22px;
+        border-left: 1px solid;
+        content: "";
+        width: 3em;
+        height: 100%;
+    }
+
+    .content ul ul.child li:last-child::after {
+        display: none;
+    }
+
+    .content ul.data>li:after,
+    ul.tree>li:before {
+        display: none;
+    }
+
+
+    .content ul.tree>li {
+        position: relative;
+        left: 0px;
+    }
+
+
+    .tree .card hr {
+        width: 100%;
         color: #1d1f21;
     }
 
-    .card-menu .card-subtitle {
-        font-size: 10px;
-        color: #1d1f21;
+    .tree .card {
+        border-radius: 2px;
+        text-align: center;
+        padding-right: 3px;
+        padding-left: 3px;
+        display: flex;
+        flex: 2;
+        white-space: wrap;
     }
 
-    .card-menu .btn-info a{
-        font-size: 10px;
+    .tree .card .card-body {
+        padding-left: 3px;
+        padding-right: 3px;
     }
 
-    .card-menu .btn-info{
-        font-size: 10px;
-    } */
+    .tree .card .card-title {
+        font-size: 10px !important;
+    }
+
+    .tree .card .card-content {
+        font-size: 10px !important;
+    }
+
+    .contain .add-tree .tree {
+        position: relative;
+        top: 5% !important;
+    }
+
+    .profile {
+        display: flex;
+        position: relative;
+        left: 0px;
+    }
+
+    .profile .card {
+        width: 100%;
+    }
+
+    .update-profile .card {
+        width: 100%;
+    }
+
 }

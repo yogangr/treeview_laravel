@@ -7,7 +7,7 @@
 @section('content')
     <link rel="stylesheet" href="/css/style.css">
     <div class="content-tree mt-5" id="content">
-        <ul class="tree">
+        <ul class="tree data">
             <li class="parent">
                 @foreach ($items as $item)
                     <details id="parent">
@@ -239,6 +239,60 @@
             mode1Button.style.display = "none";
             mode2Button.style.display = "block";
             return defaultMode();
+        });
+    </script> --}}
+
+    {{-- <script>
+        const allDetails = document.querySelectorAll('details>ul.child>li:not(:first-child) details');
+        const summaryParent = document.querySelectorAll('summary.card-parent');
+
+        // Membuat objek untuk menyimpan nilai transformasi pada setiap elemen details
+        const transformValues = {};
+
+        // Inisialisasi nilai transformasi
+        allDetails.forEach((details, index) => {
+            transformValues[index] = 0;
+        });
+
+        // Fungsi untuk menangani perubahan status open pada details
+        function handleDetailsOpen(event) {
+            const details = event.target;
+            const isOpen = details.open;
+
+            const index = Array.from(allDetails).indexOf(details);
+
+            summaryParent.forEach(function(summary, i) {
+                // Tambahkan gaya atau logika lain di sini
+                if (i === index) {
+                    transformValues[index] = isOpen ? transformValues[index] - 50 : transformValues[index] + 50;
+                }
+
+                summary.style.transform = `translateX(${transformValues[i]}%)`;
+            });
+        }
+
+        // Fungsi untuk menangani penutupan details di atasnya
+        function handleDetailsClose(event) {
+            const closedDetails = event.target;
+            const closedIndex = Array.from(allDetails).indexOf(closedDetails);
+
+            // Reset nilai transformasi untuk elemen di bawah details yang ditutup
+            allDetails.forEach(function(details, index) {
+                if (index > closedIndex) {
+                    transformValues[index] = 0; // Reset nilai transformasi
+                    summaryParent[index].style.transform = `translateX(${transformValues[index]}%)`;
+                }
+            });
+        }
+
+        // Menambahkan event listener untuk setiap elemen details
+        allDetails.forEach(function(details) {
+            details.addEventListener('toggle', handleDetailsOpen);
+        });
+
+        // Menambahkan event listener untuk mendeteksi penutupan details di atasnya
+        allDetails.forEach(function(details) {
+            details.addEventListener('toggle', handleDetailsClose);
         });
     </script> --}}
 

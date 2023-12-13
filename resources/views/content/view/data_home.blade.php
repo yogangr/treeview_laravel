@@ -7,7 +7,7 @@
 @section('content')
     <link rel="stylesheet" href="css/style.css">
     <h1></h1>
-    <table id="example" class="table table-striped table-bordered" style="width: 80%">
+    <table id="example" class="table table-striped table-bordered" style="width:80%; ">
         <thead>
             <tr>
                 <th>Judul</th>

@@ -2,7 +2,7 @@
 
 @section('content')
     <link rel="stylesheet" href="../css/style.css">
-    <div class="container">
+    <div class="container update-profile">
         <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="card h-100">
@@ -48,8 +48,8 @@
                             <div class="row gutters">
                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                     <div class="text-right">
-                                        <button type="button" id="submit" name="submit"
-                                            class="btn btn-secondary mt-3">Cancel</button>
+                                        <button type="button" id="submit" name="submit" class="btn btn-secondary mt-3">
+                                            <a href="{{ route('profile') }}">Cancel</a></button>
                                         <button type="submit" id="submit" name="submit"
                                             class="btn btn-primary mt-3">Update</button>
                                     </div>
